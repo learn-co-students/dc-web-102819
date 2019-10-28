@@ -1,9 +1,12 @@
+require 'pry'
+
 def game_hash
   {
     home: {
       team_name: "Brooklyn Nets",
       colors: ["Black", "White"],
       players: [
+
         { player_name: "Alan Anderson",
           number: 0,
           shoe: 16,
@@ -115,6 +118,22 @@ def game_hash
   }
 end
 
-def num_points_scored
+def get_player_info(player_name)
+  # go through game hash
+  game_hash.each do |team_location, team_hash|
+    # find player with given name
+    team_hash[:players].each do |player_info|
+      if player_info[:player_name] == player_name 
+        return player_info
+      end
+    end
+  end
+end
 
+def num_points_scored(player_name)
+  return get_player_info(player_name)[:points]
+end
+
+def shoe_size(player_name)
+  return get_player_info(player_name)[:shoe]
 end
