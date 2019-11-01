@@ -1,6 +1,12 @@
+require 'pry'
+
 class Backer
 
     attr_accessor :backed_projects, :name
+    # .name 
+    # .name=
+    # .backed_projects
+    # .backed_projects=
 
     def initialize(name)
         @name = name
@@ -10,6 +16,10 @@ class Backer
     def back_project(project)
         self.backed_projects << project
         project.backers << self
+    end
+
+    def unback_project(project)
+        self.backed_projects.delete(project)
     end
 end
 
@@ -32,7 +42,7 @@ end
 hoverboard = Project.new('Hoverboard')
 marty = Backer.new("Marty McFly")
 
-hoverboard.add_backer(marty)
+marty.back_project(hoverboard)
+marty.unback_project(hoverboard)
+binding.prye
 
-puts hoverboard.backers.collect {|x| x.name}
-puts marty.backed_projects.collect {|x| x.name}
