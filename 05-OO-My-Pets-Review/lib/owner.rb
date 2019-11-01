@@ -2,7 +2,7 @@ class Owner
   
   @@all = []
   
-  # Macro (aka "shorthand") method for creating an 
+  # Macro (aka "shorthand") method for creating getters and setters
   
   attr_reader :species, :name
   
