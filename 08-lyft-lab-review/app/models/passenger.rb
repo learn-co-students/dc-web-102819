@@ -30,4 +30,10 @@ class Passenger
         end
     end
 
+    def my_drivers_names
+        # returns an array of all the drivers' names 
+        # that you've driven with (as strings)
+
+
+    end
 end
