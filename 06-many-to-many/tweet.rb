@@ -30,10 +30,12 @@ class Tweet
         # Users who have liked this tweet
 
         # Look at all the Likes
-        Like.all.select do |like|
+        my_likes = Like.all.select do |like|
         # choose the Likes for tweet1 (or whatever)
             like.tweet == self
-        end.collect do |like|
+        end
+
+        my_likes.collect do |like|
         # get the User for each of those Likes
             like.user 
         end
