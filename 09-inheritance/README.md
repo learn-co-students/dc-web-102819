@@ -11,3 +11,7 @@
 - superclass
 - Method Resolution Order (MRO)
 - private/public methods
+
+# Modules
+`include <Module Name>` makes everything instance methods
+`extend <Module Name>` makes everything classs methods

@@ -1,28 +1,77 @@
 class Animal
 
+    attr_reader :name, :color
+
+    def initialize(name, color)
+        @name, @color = name, color
+    end
+
+    def say_hi
+        "Hello my name is #{self.name}"
+    end
 
 end
 
+module SwimmingAnimal
 
-
-module Something
-
-
-        def say_hi
-            puts "hi"
+    module InstanceMethods
+        def take_a_swim # instance
+            puts "I like swimming"
         end
 
+        
+    end
 
-        def self.hello
-            puts "hello"
+    module ClassMethods
+
+        def can_swim? # class 
+            return true
         end
+    end
+end
+
+class Mammal < Animal 
+
+    def is_warm_blooded?
+        return true
+    end
+end
+
+class Cat < Mammal 
+
+    attr_reader :floofiness, :species
+
+    extend SwimmingAnimal::ClassMethods
+    include SwimmingAnimal::InstanceMethods
+
+    def initialize(color, floofiness, name="Kitty" )
+        @species = "feline"
+        @floofiness = floofiness
+        super(name, color)
+    end
+
+    def say_hi
+        puts "Meow"
+        super()
+    end
 
 end
 
-class Dog < Animal 
 
-    include Something
+
+class Giraffe < Mammal 
+
 end
-fido = Dog.new
-fido.say_hi
-Dog.hello
+
+class Dog < Mammal
+
+end
+
+class Fish < Animal
+
+end
+
+
+ella = Cat.new("black", 8, "Ella")
+puts Cat.can_swim?
+puts ella.take_a_swim
