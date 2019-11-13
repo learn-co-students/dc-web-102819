@@ -6,6 +6,9 @@ class Course
         @name, @length, @description = name, length, description
     end
 
+    # write a method that returns the longest course (highest length)
+
+    
     # def how_long_is_this_course?
     #     return @length
     # end
