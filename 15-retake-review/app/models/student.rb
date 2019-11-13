@@ -64,6 +64,29 @@ class Student
         end
     end
 
+    def time_spent_in_class
+        time_spent = self.courses.map do |course|
+            course.length
+        end
+        time_spent.sum
+    end
+
+    def self.longest_class_time
+        # most_bored_student_time = 0
+        # most_bored_student = nil
+        # Student.all.each do |student|
+        #     if student.time_spent_in_class > most_bored_student_time
+        #         most_bored_student = student
+        #         most_bored_student_time = student.time_spent_in_class
+        #     end
+
+        # end
+        Student.all.max_by do |student|
+            student.time_spent_in_class
+        end
+
+    end
+
 end
  
 
