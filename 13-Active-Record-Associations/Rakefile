@@ -1,0 +1,13 @@
+require_relative 'config/environment'
+require 'sinatra/activerecord/rake'
+#rake db:drop
+#rake db:migrate
+
+desc "Loads a console"
+task :console do
+    paul = User.last
+    ann = User.first
+    first_tweet = Tweet.first
+    tea = Drink.find_by(name: "Tea")
+    binding.pry
+end

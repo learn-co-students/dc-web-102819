@@ -28,7 +28,7 @@
 
 - You need a JOIN class to keep track of the relationship between the outer classes
 - The JOIN stores the association of student and the boating test
-  - It stores the INSTANCE of the student taking the test and the INSTANCE of the instructor giving the test in the INSTANCE of the boating test.
+  - It stores a reference to the INSTANCE of the student taking the test and a reference to the INSTANCE of the instructor giving the test in instance variables on the INSTANCE of the boating test.
 
 ### Review Ruby Fundamentals
 
