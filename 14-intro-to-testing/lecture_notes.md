@@ -1,3 +1,5 @@
+- review session this afternoon
+- 
 - include `rspec` in Gemfile
 - `rspec --init`
 
