@@ -33,12 +33,23 @@ class Course
 
     end
 
+    def enrollments
+        Enrollment.all.select do |enrollment|
+            enrollment.course == self
+        end
+    end
+
     def students
         # returns all students in this course
-
-
+        self.enrollments.map do |enrollment|
+            enrollment.student 
+        end
     end
-    
+
+    def roster vs self.roster
+        # write a method that returns just the full names
+        # of all students in the course
+
     # def how_long_is_this_course?
     #     return @length
     # end
