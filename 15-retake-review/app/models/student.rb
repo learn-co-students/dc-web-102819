@@ -38,6 +38,12 @@ class Student
     # write a method that returns an array of all students' full names
     # ["Trevor Jameson", "Chine Anikwe", "Ann Duong"]
 
+    def self.names 
+        self.all.collect do |student|
+            student.full_name
+        end
+    end
+
 end
  
 
