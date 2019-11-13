@@ -44,6 +44,26 @@ class Student
         end
     end
 
+    def enroll_in_course(course, date)
+        # create an enrollment instance
+        Enrollment.new(course, self, date)
+    end
+
+    def enrollments
+        Enrollment.all.select do |enrollment|
+            enrollment.student == self
+        end
+    end
+
+    def courses
+        # returns all a student's courses
+        # take enrollments and map to transform
+        # data into courses for that student
+        self.enrollments.map do |enrollment|
+            enrollment.course
+        end
+    end
+
 end
  
 
