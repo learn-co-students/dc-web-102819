@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Index Page</title>
+</head>
+<body>
+
+    <h2>This is a listing of all the books</h2>
+
+
+    <ul>
+        <% @books.each do |book| %>
+            <li>
+                <a href="/books/<%= book.id %>"><%= book.title %></a>
+            </li>
+        <% end %>
+    </ul>
+</body>
+</html>
