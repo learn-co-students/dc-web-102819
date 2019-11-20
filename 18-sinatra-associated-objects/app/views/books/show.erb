@@ -5,13 +5,13 @@
 </head>
 <body>
     <h1><%= @book.title %></h1>
-    <h2>by <%= @book.author %></h2>
+    <h2>by <%= @book.author.name %></h2>
 
     <div>Description:</div>
     <div><%= @book.snippet %></div>
 
 
-    <form action="" method="POST">
+    <form action="/books/<%= @book.id %>" method="POST">
         <input type="hidden" value="DELETE" name="_method">
         <input type="submit" value="Delete this book">
     </form>
