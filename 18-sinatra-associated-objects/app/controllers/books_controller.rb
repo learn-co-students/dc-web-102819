@@ -15,8 +15,8 @@ class BooksController < Sinatra::Base
 
     post "/books" do 
         # process the form
-        author_name = params[:author_name]
-        author = Author.find_or_create_by(name: author_name)
+        author_id = params[:author_id]
+        author = Author.find(author_id)
         title = params[:title]
         snippet = params[:snippet]
         book = Book.create(author: author,
