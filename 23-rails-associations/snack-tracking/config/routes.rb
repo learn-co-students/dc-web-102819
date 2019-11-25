@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'retailers/index'
+  get 'retailer/index'
   get '/whatever', to: "snacks#home", as: "home"
   get '/fun', to: "snacks#my_super_fun_page"
   # get '/snacks', to: "snack#index", as: "snacks"

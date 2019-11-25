@@ -7,7 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Snack.destroy_all
+Retailer.destroy_all
 
-Snack.create(name: "Nachos", calories: 600, deliciousness: 2)
-Snack.create(name: "Twinkies", calories: 400, deliciousness: 4)
-Snack.create(name: "Ice Cream Cake", calories: 500, deliciousness: 9)
+hostess = Retailer.create(name: "Hostess", year_established: 1910)
+girl_scouts = Retailer.create(name: "Girl Scouts", year_established: 1902)
+
+Snack.create(name: "Ho-Hos", calories: 600, deliciousness: 2, retailer: hostess)
+Snack.create(name: "Twinkies", calories: 400, deliciousness: 4, retailer_id: hostess.id)
+Snack.create(name: "Tagalongs", calories: 500, deliciousness: 9, retailer: girl_scouts)
+Snack.create(name: "Thin Mints", calories: 500, deliciousness: 1, retailer: girl_scouts)
