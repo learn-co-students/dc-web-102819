@@ -17,6 +17,7 @@ class SnacksController < ApplicationController
   end
 
   def new
+    puts "hihihihihihihihihihihi"
     @snack = Snack.new
   end
 
@@ -45,7 +46,7 @@ class SnacksController < ApplicationController
   private
 
   def snack_strong_params
-    params.require(:snack).permit(:name, :calories, :deliciousness)
+    params.require(:snack).permit(:name, :calories, :deliciousness, :retailer_id)
 
   end
 
