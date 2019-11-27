@@ -4,6 +4,6 @@
 
 <ul>
     <% @retailers.each do |ret| %>
-        <li><%= link_to ret.name, retailer_path(@ret.id) %></li>
+        <li><%= link_to ret.name, retailer_path(ret.id) %></li>
     <% end %>
 </ul>

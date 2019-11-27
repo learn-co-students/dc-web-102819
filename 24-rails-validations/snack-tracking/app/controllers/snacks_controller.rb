@@ -17,13 +17,16 @@ class SnacksController < ApplicationController
   end
 
   def new
-    puts "hihihihihihihihihihihi"
     @snack = Snack.new
   end
 
   def create
-    snack = Snack.create(snack_strong_params)
-    redirect_to snack_path(snack)
+    @snack = Snack.create(snack_strong_params)
+    if @snack.valid?
+      redirect_to snack_path(@snack)
+    else
+      render :new
+    end
   end
 
   def edit

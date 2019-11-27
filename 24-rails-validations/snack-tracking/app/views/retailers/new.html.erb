@@ -1,5 +1,7 @@
 <h1>Create a New Retailer</h1>
 
+<%= render partial: "shared/error_list", locals: {new_object: @retailer} %>
+
 <%= form_for @retailer do |ret| %>
     <%= ret.label :name %>
     <%= ret.text_field :name %>
@@ -8,7 +10,6 @@
 
 
     <h2>Snacks by this retailer</h2>
-        <% 3.times do %>
             <div>
             <%= ret.fields_for :snacks do |snack| %>
                 <%= snack.label :name %>
@@ -21,6 +22,5 @@
             <% end %>
 
             </div>
-        <% end %>
     <%= ret.submit %>
 <% end %>
