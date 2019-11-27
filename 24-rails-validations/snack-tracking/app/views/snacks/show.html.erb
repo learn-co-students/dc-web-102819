@@ -1,0 +1,11 @@
+<h1>Detail page</h1>
+
+<h2><%= @snack.name %></h2>
+
+<h3>Calories: <%= @snack.calories %></h3>
+<h3>Deliciousness: <%= @snack.deliciousness %></h3>
+
+
+<%= link_to "Edit this snack", edit_snack_path(@snack) %>
+<%= link_to "Delete this snack", snack_path(@snack), :method => :delete, data: {:confirm => "Do you really want to delete this delicious snack?"} %>
+<%= link_to "Index Page", snacks_path %>
