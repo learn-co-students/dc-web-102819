@@ -1,0 +1,16 @@
+<h1>Snack#index</h1>
+<h2>This is the snack page for <%= session["username"] %></h2>
+
+<p>Find me in app/views/snack/index.html.erb</p>
+
+<h2>My favorite cookie is <%= cookies["my_favorite"] %></h2>
+<h4>My secret favorite cookie is <%= session["secret_favorite"] %></h4>
+<h3>The last snack I visited was <%= cookies["last_visited"] %></h3>
+
+<ul>
+    <% @snacks.each do |snack| %>
+        <li><%= link_to snack.name, snack_path(snack) %></li>
+    <% end %>
+</ul>
+
+<%= link_to "Home", home_path %>
