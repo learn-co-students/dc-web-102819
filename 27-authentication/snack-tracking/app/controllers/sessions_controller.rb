@@ -12,11 +12,11 @@ class SessionsController < ApplicationController
     def create
         username = params[:username]
         user = User.find_by(username: username)
-        if user
+        if user && user.authenticate(params[:password])
             session["username"] = user.username
             redirect_to snacks_path
         else
-            flash["error"] = "No user found with that name"
+            flash["error"] = "No user found with that name and password"
             redirect_to login_path
         end
     end
@@ -25,4 +25,6 @@ class SessionsController < ApplicationController
         session.clear
         redirect_to login_path
     end
+
+
 end

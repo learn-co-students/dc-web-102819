@@ -4,13 +4,21 @@ class UsersController < ApplicationController
   end
 
   def create 
-    user = User.new(username: params[:username], password: params[:password])
-    if user.valid?
-        user.save
+    @user = User.new(user_params)
+    if @user.valid?
+
+        @user.save
+        session[:username] = @user.username
         redirect_to snacks_path
     else
         render :new
     end
 
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:username, :password)
   end
 end
