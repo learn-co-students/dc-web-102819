@@ -1,0 +1,979 @@
+  [1m[35m (454.2ms)[0m  [1m[35mCREATE DATABASE "cats_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (337.3ms)[0m  [1m[35mCREATE DATABASE "cats_backend_test" ENCODING = 'unicode'[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6449407656096229860)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCats (20191213192232)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE TABLE "cats" ("id" bigserial primary key, "name" character varying, "img" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213192232"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateHobbies (20191213192242)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "hobbies" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213192242"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCatHobbies (20191213192252)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "cat_hobbies" ("id" bigserial primary key, "cat_id" character varying, "hobby_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213192252"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.9ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-13 19:24:04.524926"], ["updated_at", "2019-12-13 19:24:04.524926"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6449407656096229860)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6449407656096229860)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangeColumnsToIntegers (20191213192707)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mALTER TABLE "cat_hobbies" ALTER COLUMN "cat_id" TYPE integer[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6449407656096229860)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (158.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "cats_backend_development"[0m
+  [1m[35m (141.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "cats_backend_test"[0m
+  [1m[35m (342.5ms)[0m  [1m[35mCREATE DATABASE "cats_backend_development" ENCODING = 'unicode'[0m
+  [1m[35m (331.9ms)[0m  [1m[35mCREATE DATABASE "cats_backend_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.8ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "cat_hobbies" CASCADE[0m
+  [1m[35m (8.2ms)[0m  [1m[35mCREATE TABLE "cat_hobbies" ("id" bigserial primary key, "cat_id" character varying, "hobby_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "cats" CASCADE[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "cats" ("id" bigserial primary key, "name" character varying, "img" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "hobbies" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "hobbies" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191213192252)[0m
+  [1m[35m (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191213192232),
+(20191213192242);
+
+[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.7ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-13 19:28:26.717611"], ["updated_at", "2019-12-13 19:28:26.717611"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "d227b89c2ea974fa023bc2ad8ec92b5c4d10bad7"], ["created_at", "2019-12-13 19:28:26.729167"], ["updated_at", "2019-12-13 19:28:26.729167"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "cat_hobbies" CASCADE[0m
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "cat_hobbies" ("id" bigserial primary key, "cat_id" character varying, "hobby_id" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "cats" CASCADE[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "cats" ("id" bigserial primary key, "name" character varying, "img" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "hobbies" CASCADE[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "hobbies" ("id" bigserial primary key, "name" character varying, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20191213192252)[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20191213192232),
+(20191213192242);
+
+[0m
+  [1m[35m (4.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-12-13 19:28:26.816706"], ["updated_at", "2019-12-13 19:28:26.816706"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (1.0ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-12-13 19:28:26.825423"], ["key", "environment"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "d227b89c2ea974fa023bc2ad8ec92b5c4d10bad7"], ["created_at", "2019-12-13 19:28:26.832966"], ["updated_at", "2019-12-13 19:28:26.832966"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6449407656096229860)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6449407656096229860)[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6449407656096229860)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCatHobbies (20191213192252)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.4ms)[0m  [1m[35mDROP TABLE "cat_hobbies"[0m
+  [1m[36mprimary::SchemaMigration Destroy (0.9ms)[0m  [1m[31mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = $1[0m  [["version", "20191213192252"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(6449407656096229860)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(6449407656096229860)[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateCatHobbies (20191213192252)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "cat_hobbies" ("id" bigserial primary key, "cat_id" integer, "hobby_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20191213192252"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(6449407656096229860)[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (1.0ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ella"], ["img", "https://i.imgur.com/YksIEqY.jpg"], ["created_at", "2019-12-13 19:33:35.380941"], ["updated_at", "2019-12-13 19:33:35.380941"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sylvester"], ["img", "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Sylvester_the_Cat.svg/172px-Sylvester_the_Cat.svg.png"], ["created_at", "2019-12-13 19:33:35.385205"], ["updated_at", "2019-12-13 19:33:35.385205"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Grumpy Cat"], ["img", "https://media.wired.com/photos/5cdefc28b2569892c06b2ae4/master/w_2560%2Cc_limit/Culture-Grumpy-Cat-487386121-2.jpg"], ["created_at", "2019-12-13 19:33:35.387912"], ["updated_at", "2019-12-13 19:33:35.387912"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (1.1ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eating"], ["description", "Eating all the things that will them vomit"], ["created_at", "2019-12-13 19:33:35.400348"], ["updated_at", "2019-12-13 19:33:35.400348"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Napping"], ["description", "Find a sunbeam"], ["created_at", "2019-12-13 19:33:35.404244"], ["updated_at", "2019-12-13 19:33:35.404244"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pushing things off table"], ["description", "You didn't like that vase anyway"], ["created_at", "2019-12-13 19:33:35.406919"], ["updated_at", "2019-12-13 19:33:35.406919"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.9ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 1], ["hobby_id", 1], ["created_at", "2019-12-13 19:33:35.443348"], ["updated_at", "2019-12-13 19:33:35.443348"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.4ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 1], ["hobby_id", 2], ["created_at", "2019-12-13 19:33:35.447296"], ["updated_at", "2019-12-13 19:33:35.447296"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.6ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ella"], ["img", "https://i.imgur.com/YksIEqY.jpg"], ["created_at", "2019-12-13 19:33:48.197830"], ["updated_at", "2019-12-13 19:33:48.197830"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sylvester"], ["img", "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Sylvester_the_Cat.svg/172px-Sylvester_the_Cat.svg.png"], ["created_at", "2019-12-13 19:33:48.208299"], ["updated_at", "2019-12-13 19:33:48.208299"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.4ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Grumpy Cat"], ["img", "https://media.wired.com/photos/5cdefc28b2569892c06b2ae4/master/w_2560%2Cc_limit/Culture-Grumpy-Cat-487386121-2.jpg"], ["created_at", "2019-12-13 19:33:48.211554"], ["updated_at", "2019-12-13 19:33:48.211554"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.4ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eating"], ["description", "Eating all the things that will them vomit"], ["created_at", "2019-12-13 19:33:48.224808"], ["updated_at", "2019-12-13 19:33:48.224808"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Napping"], ["description", "Find a sunbeam"], ["created_at", "2019-12-13 19:33:48.227862"], ["updated_at", "2019-12-13 19:33:48.227862"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pushing things off table"], ["description", "You didn't like that vase anyway"], ["created_at", "2019-12-13 19:33:48.230774"], ["updated_at", "2019-12-13 19:33:48.230774"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.5ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 4], ["hobby_id", 4], ["created_at", "2019-12-13 19:33:48.249991"], ["updated_at", "2019-12-13 19:33:48.249991"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.6ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 4], ["hobby_id", 5], ["created_at", "2019-12-13 19:33:48.253032"], ["updated_at", "2019-12-13 19:33:48.253032"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 5], ["hobby_id", 5], ["created_at", "2019-12-13 19:33:48.257407"], ["updated_at", "2019-12-13 19:33:48.257407"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 6], ["hobby_id", 6], ["created_at", "2019-12-13 19:33:48.261397"], ["updated_at", "2019-12-13 19:33:48.261397"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.5ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.3ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.2ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.2ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.3ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.3ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.3ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.4ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ella"], ["img", "https://i.imgur.com/YksIEqY.jpg"], ["created_at", "2019-12-13 19:34:01.649040"], ["updated_at", "2019-12-13 19:34:01.649040"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sylvester"], ["img", "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Sylvester_the_Cat.svg/172px-Sylvester_the_Cat.svg.png"], ["created_at", "2019-12-13 19:34:01.652476"], ["updated_at", "2019-12-13 19:34:01.652476"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Grumpy Cat"], ["img", "https://media.wired.com/photos/5cdefc28b2569892c06b2ae4/master/w_2560%2Cc_limit/Culture-Grumpy-Cat-487386121-2.jpg"], ["created_at", "2019-12-13 19:34:01.655674"], ["updated_at", "2019-12-13 19:34:01.655674"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eating"], ["description", "Eating all the things that will them vomit"], ["created_at", "2019-12-13 19:34:01.658679"], ["updated_at", "2019-12-13 19:34:01.658679"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Napping"], ["description", "Find a sunbeam"], ["created_at", "2019-12-13 19:34:01.661518"], ["updated_at", "2019-12-13 19:34:01.661518"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pushing things off table"], ["description", "You didn't like that vase anyway"], ["created_at", "2019-12-13 19:34:01.664580"], ["updated_at", "2019-12-13 19:34:01.664580"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.5ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 7], ["hobby_id", 7], ["created_at", "2019-12-13 19:34:01.684317"], ["updated_at", "2019-12-13 19:34:01.684317"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 7], ["hobby_id", 8], ["created_at", "2019-12-13 19:34:01.687827"], ["updated_at", "2019-12-13 19:34:01.687827"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 8], ["hobby_id", 8], ["created_at", "2019-12-13 19:34:01.692102"], ["updated_at", "2019-12-13 19:34:01.692102"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 9], ["hobby_id", 9], ["created_at", "2019-12-13 19:34:01.695709"], ["updated_at", "2019-12-13 19:34:01.695709"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cats" for ::1 at 2019-12-13 14:38:05 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 19ms (Views: 7.7ms | ActiveRecord: 8.1ms | Allocations: 6251)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:38:10 -0500
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms | Allocations: 1142)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:40:20 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1144)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:45:49 -0500
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 16ms (Views: 6.1ms | ActiveRecord: 6.4ms | Allocations: 6255)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:49:25 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.3ms | Allocations: 1144)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:51:14 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (3.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 8ms (Views: 3.1ms | ActiveRecord: 3.5ms | Allocations: 1144)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:51:34 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 1144)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:53:06 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 1.9ms | ActiveRecord: 0.3ms | Allocations: 1144)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:53:28 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1126)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:53:47 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.4ms | Allocations: 1126)
+
+
+Started GET "/hobbies" for ::1 at 2019-12-13 14:57:52 -0500
+Processing by HobbiesController#index as HTML
+  [1m[36mHobby Load (0.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 17ms (Views: 6.6ms | ActiveRecord: 7.8ms | Allocations: 5546)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 14:58:01 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 14:58:01 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 19ms (Views: 7.4ms | ActiveRecord: 8.7ms | Allocations: 5322)
+
+
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (1.8ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 5ms (Views: 2.9ms | ActiveRecord: 1.8ms | Allocations: 1187)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:00:16 -0500
+Processing by CatsController#index as */*
+Started GET "/hobbies" for ::1 at 2019-12-13 15:00:16 -0500
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 1.1ms | Allocations: 1468)
+
+
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.5ms | ActiveRecord: 0.5ms | Allocations: 1126)
+
+
+Started GET "/hobbies" for ::1 at 2019-12-13 15:02:39 -0500
+Processing by HobbiesController#index as HTML
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 16ms (Views: 4.6ms | ActiveRecord: 9.0ms | Allocations: 5547)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:02:43 -0500
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:5:in `map'
+  [1m[36mHobby Load (1.0ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:8:in `index'
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:8:in `index'
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:8:in `index'
+Completed 200 OK in 44ms (Views: 16.0ms | ActiveRecord: 10.7ms | Allocations: 14139)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:03:47 -0500
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 5.2ms | Allocations: 5312)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:04:35 -0500
+  
+SyntaxError (/Users/paul.nicholsen/Development/code/flatiron/batches/dc-web-102819/36-rails-api/cats-backend/app/controllers/cats_controller.rb:10: syntax error, unexpected =>, expecting '}'
+            except => [:created_at, :updated_at]
+                   ^~
+/Users/paul.nicholsen/Development/code/flatiron/batches/dc-web-102819/36-rails-api/cats-backend/app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting end
+        }
+        ^):
+  
+app/controllers/cats_controller.rb:10: syntax error, unexpected =>, expecting '}'
+app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting end
+app/controllers/cats_controller.rb:10: syntax error, unexpected =>, expecting '}'
+app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting end
+Started GET "/cats" for ::1 at 2019-12-13 15:04:45 -0500
+  
+SyntaxError (/Users/paul.nicholsen/Development/code/flatiron/batches/dc-web-102819/36-rails-api/cats-backend/app/controllers/cats_controller.rb:10: syntax error, unexpected =>, expecting '}'
+            :except => [:created_at, :updated_at]
+                    ^~
+/Users/paul.nicholsen/Development/code/flatiron/batches/dc-web-102819/36-rails-api/cats-backend/app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting end
+        }
+        ^):
+  
+app/controllers/cats_controller.rb:10: syntax error, unexpected =>, expecting '}'
+app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting end
+app/controllers/cats_controller.rb:10: syntax error, unexpected =>, expecting '}'
+app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting end
+Started GET "/cats" for ::1 at 2019-12-13 15:05:03 -0500
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 5.7ms | Allocations: 5373)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:05:21 -0500
+  
+SyntaxError (/Users/paul.nicholsen/Development/code/flatiron/batches/dc-web-102819/36-rails-api/cats-backend/app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting =>
+...         :include => {:hobbies}
+...                              ^):
+  
+app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting =>
+app/controllers/cats_controller.rb:11: syntax error, unexpected '}', expecting =>
+Started GET "/cats" for ::1 at 2019-12-13 15:05:52 -0500
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (2.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.8ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 44ms (Views: 0.1ms | ActiveRecord: 15.1ms | Allocations: 14242)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:06:33 -0500
+Processing by CatsController#index as HTML
+  [1m[36mCat Load (0.4ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.2ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.2ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 33ms (Views: 0.1ms | ActiveRecord: 11.9ms | Allocations: 14006)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:11:03 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:11:03 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.6ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (2.0ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.8ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 5.2ms | Allocations: 5262)
+
+
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 1143)
+
+
+Started GET "/hobbies" for ::1 at 2019-12-13 15:11:42 -0500
+Started GET "/cats" for ::1 at 2019-12-13 15:11:42 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (2.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.2ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+  [1m[36mHobby Load (0.6ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 4.7ms | ActiveRecord: 1.2ms | Allocations: 2259)
+
+
+  [1m[36mHobby Load (0.7ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 4.0ms | Allocations: 5795)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:12:11 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:12:11 -0500
+Processing by CatsController#index as */*
+Processing by HobbiesController#index as */*
+  [1m[36mCat Load (3.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (6.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 10ms (Views: 3.0ms | ActiveRecord: 6.9ms | Allocations: 2036)
+
+
+  [1m[36mHobby Load (4.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.2ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 19ms (Views: 0.1ms | ActiveRecord: 9.6ms | Allocations: 5487)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:12:14 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:12:14 -0500
+Processing by HobbiesController#index as */*
+Processing by CatsController#index as */*
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.5ms | Allocations: 1215)
+
+
+  [1m[36mCat Load (11.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.7ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 33ms (Views: 0.1ms | ActiveRecord: 12.6ms | Allocations: 5393)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:13:48 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:13:48 -0500
+Processing by CatsController#index as */*
+Processing by HobbiesController#index as */*
+  [1m[36mCat Load (0.7ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (2.0ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+  [1m[36mHobby Load (1.1ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 2.0ms | Allocations: 2062)
+
+
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 12ms (Views: 0.1ms | ActiveRecord: 2.4ms | Allocations: 5491)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:19:21 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:19:21 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (1.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.1ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.7ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 36ms (Views: 0.1ms | ActiveRecord: 3.7ms | Allocations: 13618)
+
+
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (1.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 38ms (Views: 20.3ms | ActiveRecord: 12.9ms | Allocations: 5475)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:19:41 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:19:41 -0500
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.6ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (1.1ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+  [1m[36mHobby Load (1.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 4.9ms | ActiveRecord: 1.5ms | Allocations: 3347)
+
+
+  [1m[36mHobby Load (6.6ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 43ms (Views: 0.1ms | ActiveRecord: 20.4ms | Allocations: 13117)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:22:36 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:22:36 -0500
+Processing by CatsController#index as */*
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms | Allocations: 1126)
+
+
+  [1m[36mCat Load (7.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 8.3ms | Allocations: 5808)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:26:25 -0500
+Processing by CatsController#index as */*
+Started GET "/hobbies" for ::1 at 2019-12-13 15:26:25 -0500
+Processing by HobbiesController#index as */*
+  [1m[36mCat Load (2.3ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.5ms | Allocations: 2036)
+
+
+  [1m[36mHobby Load (1.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 0.1ms | ActiveRecord: 4.3ms | Allocations: 5816)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:26:30 -0500
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+  
+ActionDispatch::Http::Parameters::ParseError (416: unexpected token at 'object Object]'):
+  
+actionpack (6.0.2) lib/action_dispatch/http/parameters.rb:115:in `rescue in parse_formatted_parameters'
+actionpack (6.0.2) lib/action_dispatch/http/parameters.rb:111:in `parse_formatted_parameters'
+actionpack (6.0.2) lib/action_dispatch/http/request.rb:381:in `block in POST'
+rack (2.0.7) lib/rack/request.rb:59:in `fetch'
+rack (2.0.7) lib/rack/request.rb:59:in `fetch_header'
+actionpack (6.0.2) lib/action_dispatch/http/request.rb:380:in `POST'
+actionpack (6.0.2) lib/action_dispatch/http/parameters.rb:55:in `parameters'
+actionpack (6.0.2) lib/action_controller/metal/params_wrapper.rb:279:in `_wrapper_enabled?'
+actionpack (6.0.2) lib/action_controller/metal/params_wrapper.rb:244:in `process_action'
+activerecord (6.0.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.0.2) lib/abstract_controller/base.rb:136:in `process'
+actionpack (6.0.2) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (6.0.2) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (6.0.2) lib/action_dispatch/routing/route_set.rb:51:in `dispatch'
+actionpack (6.0.2) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.0.2) lib/action_dispatch/journey/router.rb:49:in `block in serve'
+actionpack (6.0.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.0.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.0.2) lib/action_dispatch/routing/route_set.rb:837:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (6.0.2) lib/active_record/migration.rb:567:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.0.2) lib/active_support/callbacks.rb:101:in `run_callbacks'
+actionpack (6.0.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:32:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (6.0.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+actionpack (6.0.2) lib/action_dispatch/middleware/host_authorization.rb:83:in `call'
+rack-cors (1.1.0) lib/rack/cors.rb:100:in `call'
+railties (6.0.2) lib/rails/engine.rb:526:in `call'
+puma (4.3.1) lib/puma/configuration.rb:228:in `call'
+puma (4.3.1) lib/puma/server.rb:681:in `handle_request'
+puma (4.3.1) lib/puma/server.rb:472:in `process_client'
+puma (4.3.1) lib/puma/server.rb:328:in `block in run'
+puma (4.3.1) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Error occurred while parsing request parameters.
+Contents:
+
+[object Object]
+Started GET "/cats" for ::1 at 2019-12-13 15:26:54 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:26:54 -0500
+Processing by HobbiesController#index as */*
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.4ms | Allocations: 1125)
+
+
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.5ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 1.4ms | Allocations: 4139)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:27:01 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Michael Crichton", "img"=>"https://images-na.ssl-images-amazon.com/images/I/61V9gcls%2BrL._SX425_.jpg", "cat"=>{"name"=>"Michael Crichton", "img"=>"https://images-na.ssl-images-amazon.com/images/I/61V9gcls%2BrL._SX425_.jpg"}}
+Completed 500 Internal Server Error in 26991ms (ActiveRecord: 0.0ms | Allocations: 67491)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/cats_controller.rb:20:in `create'
+Started GET "/cats" for ::1 at 2019-12-13 15:28:19 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:28:19 -0500
+Processing by HobbiesController#index as */*
+Processing by CatsController#index as */*
+  [1m[36mHobby Load (19.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+  [1m[36mCat Load (9.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 243ms (Views: 141.4ms | ActiveRecord: 57.2ms | Allocations: 2109626)
+
+
+  [1m[36mHobby Load (1.7ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.0ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 467ms (Views: 5.1ms | ActiveRecord: 122.0ms | Allocations: 3785073)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:28:54 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Jane Austin", "img"=>"https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-30-57b30ad41bc90__605.jpg", "cat"=>{"name"=>"Jane Austin", "img"=>"https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-30-57b30ad41bc90__605.jpg"}}
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[36mCat Create (1.5ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Jane Austin"], ["img", "https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-30-57b30ad41bc90__605.jpg"], ["created_at", "2019-12-13 20:28:54.264101"], ["updated_at", "2019-12-13 20:28:54.264101"]]
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+Completed 200 OK in 91ms (Views: 6.4ms | ActiveRecord: 8.4ms | Allocations: 771076)
+
+
+Started GET "/hobbies" for ::1 at 2019-12-13 15:29:00 -0500
+Started GET "/cats" for ::1 at 2019-12-13 15:29:00 -0500
+Processing by HobbiesController#index as */*
+Processing by CatsController#index as */*
+  [1m[36mHobby Load (8.3ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  [1m[36mCat Load (2.2ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 65ms (Views: 51.5ms | ActiveRecord: 8.3ms | Allocations: 604753)
+
+
+  [1m[36mHobby Load (13.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.8ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.2ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 10]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 249ms (Views: 1.0ms | ActiveRecord: 18.5ms | Allocations: 2405963)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:29:39 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"George", "img"=>"https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-9-57b30aa5797eb__605.jpg", "cat"=>{"name"=>"George", "img"=>"https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-9-57b30aa5797eb__605.jpg"}}
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[36mCat Create (1.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "George"], ["img", "https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-9-57b30aa5797eb__605.jpg"], ["created_at", "2019-12-13 20:29:39.938461"], ["updated_at", "2019-12-13 20:29:39.938461"]]
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+Completed 200 OK in 92ms (Views: 6.4ms | ActiveRecord: 4.8ms | Allocations: 803669)
+
+
+Started GET "/cats" for ::1 at 2019-12-13 15:29:49 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:29:49 -0500
+Processing by CatsController#index as */*
+Processing by HobbiesController#index as */*
+  [1m[36mCat Load (12.1ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (12.4ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Completed 200 OK in 82ms (Views: 61.6ms | ActiveRecord: 12.4ms | Allocations: 794400)
+
+
+  [1m[36mHobby Load (34.7ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.1ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.0ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 10]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (1.1ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 11]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 306ms (Views: 1.1ms | ActiveRecord: 50.9ms | Allocations: 2861908)
+
+
+Started GET "/hobbies" for ::1 at 2019-12-13 15:30:07 -0500
+Started GET "/cats" for ::1 at 2019-12-13 15:30:07 -0500
+Processing by CatsController#index as */*
+Processing by HobbiesController#index as */*
+  [1m[36mCat Load (14.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (11.7ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+  [1m[36mHobby Load (11.2ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 7]]
+Completed 200 OK in 88ms (Views: 74.4ms | ActiveRecord: 11.7ms | Allocations: 825866)
+
+
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (3.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 8]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (4.8ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 9]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (4.6ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 10]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.9ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 11]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 341ms (Views: 4.6ms | ActiveRecord: 39.4ms | Allocations: 2875431)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:30:12 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Mikey", "img"=>"https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-9-57b30aa5797eb__605.jpg", "cat"=>{"name"=>"Mikey", "img"=>"https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-9-57b30aa5797eb__605.jpg"}}
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[36mCat Create (1.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Mikey"], ["img", "https://static.boredpanda.com/blog/wp-content/uploads/2016/08/cute-kittens-9-57b30aa5797eb__605.jpg"], ["created_at", "2019-12-13 20:30:12.765072"], ["updated_at", "2019-12-13 20:30:12.765072"]]
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+Completed 200 OK in 93ms (Views: 6.6ms | ActiveRecord: 7.6ms | Allocations: 804425)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:30:32 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Miranda", "img"=>"https://i.chzbgr.com/full/9101826816/h58640968/cute-grey-and-white-kitten-putting-its-paw-out", "cat"=>{"name"=>"Miranda", "img"=>"https://i.chzbgr.com/full/9101826816/h58640968/cute-grey-and-white-kitten-putting-its-paw-out"}}
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[36mCat Create (1.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Miranda"], ["img", "https://i.chzbgr.com/full/9101826816/h58640968/cute-grey-and-white-kitten-putting-its-paw-out"], ["created_at", "2019-12-13 20:30:32.328404"], ["updated_at", "2019-12-13 20:30:32.328404"]]
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:18:in `create'
+Completed 200 OK in 98ms (Views: 9.0ms | ActiveRecord: 5.1ms | Allocations: 802182)
+
+
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCat Load (1.0ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 7]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.5ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.4ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.3ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Destroy (0.2ms)[0m  [1m[31mDELETE FROM "cats" WHERE "cats"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.3ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.2ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Destroy (0.2ms)[0m  [1m[31mDELETE FROM "hobbies" WHERE "hobbies"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.6ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Ella"], ["img", "https://i.imgur.com/YksIEqY.jpg"], ["created_at", "2019-12-13 20:32:11.889462"], ["updated_at", "2019-12-13 20:32:11.889462"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.4ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Sylvester"], ["img", "https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Sylvester_the_Cat.svg/172px-Sylvester_the_Cat.svg.png"], ["created_at", "2019-12-13 20:32:11.894200"], ["updated_at", "2019-12-13 20:32:11.894200"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCat Create (0.3ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Grumpy Cat"], ["img", "https://media.wired.com/photos/5cdefc28b2569892c06b2ae4/master/w_2560%2Cc_limit/Culture-Grumpy-Cat-487386121-2.jpg"], ["created_at", "2019-12-13 20:32:11.897543"], ["updated_at", "2019-12-13 20:32:11.897543"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.4ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Eating"], ["description", "Eating all the things that will them vomit"], ["created_at", "2019-12-13 20:32:11.908965"], ["updated_at", "2019-12-13 20:32:11.908965"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.4ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Napping"], ["description", "Find a sunbeam"], ["created_at", "2019-12-13 20:32:11.911887"], ["updated_at", "2019-12-13 20:32:11.911887"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "hobbies" ("name", "description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Pushing things off table"], ["description", "You didn't like that vase anyway"], ["created_at", "2019-12-13 20:32:11.915331"], ["updated_at", "2019-12-13 20:32:11.915331"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.5ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 14], ["hobby_id", 10], ["created_at", "2019-12-13 20:32:11.933051"], ["updated_at", "2019-12-13 20:32:11.933051"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 14], ["hobby_id", 11], ["created_at", "2019-12-13 20:32:11.936065"], ["updated_at", "2019-12-13 20:32:11.936065"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 15], ["hobby_id", 11], ["created_at", "2019-12-13 20:32:11.939902"], ["updated_at", "2019-12-13 20:32:11.939902"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCatHobby Create (0.3ms)[0m  [1m[32mINSERT INTO "cat_hobbies" ("cat_id", "hobby_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["cat_id", 16], ["hobby_id", 12], ["created_at", "2019-12-13 20:32:11.943512"], ["updated_at", "2019-12-13 20:32:11.943512"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/cats" for ::1 at 2019-12-13 15:32:19 -0500
+Started GET "/hobbies" for ::1 at 2019-12-13 15:32:19 -0500
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HobbiesController#index as */*
+  [1m[35m (5.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mHobby Load (1.0ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies"[0m
+  ↳ app/controllers/hobbies_controller.rb:5:in `index'
+Processing by CatsController#index as */*
+  [1m[36mCat Load (0.9ms)[0m  [1m[34mSELECT "cats".* FROM "cats"[0m
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 18ms (Views: 7.6ms | ActiveRecord: 7.5ms | Allocations: 9773)
+
+
+  [1m[36mHobby Load (1.1ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 14]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.6ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 15]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 16]]
+  ↳ app/controllers/cats_controller.rb:9:in `index'
+Completed 200 OK in 35ms (Views: 0.1ms | ActiveRecord: 13.2ms | Allocations: 17040)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:32:33 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Miranda", "img"=>"https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjWs8bZu7PmAhXP1VkKHSVaCboQjRx6BAgBEAQ&url=https%3A%2F%2Fcheezburger.com%2F4161029%2Fhere-are-adorable-kittens-to-get-you-through-monday&psig=AOvVaw2zt56I5F2J_eeIc_9k2j2v&ust=1576355313669213", "cat"=>{"name"=>"Miranda", "img"=>"https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjWs8bZu7PmAhXP1VkKHSVaCboQjRx6BAgBEAQ&url=https%3A%2F%2Fcheezburger.com%2F4161029%2Fhere-are-adorable-kittens-to-get-you-through-monday&psig=AOvVaw2zt56I5F2J_eeIc_9k2j2v&ust=1576355313669213"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:13:in `create'
+  [1m[36mCat Create (0.6ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Miranda"], ["img", "https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwjWs8bZu7PmAhXP1VkKHSVaCboQjRx6BAgBEAQ&url=https%3A%2F%2Fcheezburger.com%2F4161029%2Fhere-are-adorable-kittens-to-get-you-through-monday&psig=AOvVaw2zt56I5F2J_eeIc_9k2j2v&ust=1576355313669213"], ["created_at", "2019-12-13 20:32:33.459891"], ["updated_at", "2019-12-13 20:32:33.459891"]]
+  ↳ app/controllers/cats_controller.rb:13:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:13:in `create'
+  [1m[36mHobby Load (0.6ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 17]]
+  ↳ app/controllers/cats_controller.rb:14:in `create'
+Completed 200 OK in 8ms (Views: 0.1ms | ActiveRecord: 2.0ms | Allocations: 3550)
+
+
+Started POST "/cats" for ::1 at 2019-12-13 15:32:56 -0500
+Processing by CatsController#create as */*
+  Parameters: {"name"=>"Maya Angelou", "img"=>"https://i.chzbgr.com/full/9101826816/h58640968/cute-grey-and-white-kitten-putting-its-paw-out", "cat"=>{"name"=>"Maya Angelou", "img"=>"https://i.chzbgr.com/full/9101826816/h58640968/cute-grey-and-white-kitten-putting-its-paw-out"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/cats_controller.rb:13:in `create'
+  [1m[36mCat Create (0.5ms)[0m  [1m[32mINSERT INTO "cats" ("name", "img", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Maya Angelou"], ["img", "https://i.chzbgr.com/full/9101826816/h58640968/cute-grey-and-white-kitten-putting-its-paw-out"], ["created_at", "2019-12-13 20:32:56.934599"], ["updated_at", "2019-12-13 20:32:56.934599"]]
+  ↳ app/controllers/cats_controller.rb:13:in `create'
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/cats_controller.rb:13:in `create'
+  [1m[36mHobby Load (0.5ms)[0m  [1m[34mSELECT "hobbies".* FROM "hobbies" INNER JOIN "cat_hobbies" ON "hobbies"."id" = "cat_hobbies"."hobby_id" WHERE "cat_hobbies"."cat_id" = $1[0m  [["cat_id", 18]]
+  ↳ app/controllers/cats_controller.rb:14:in `create'
+Completed 200 OK in 9ms (Views: 0.2ms | ActiveRecord: 2.9ms | Allocations: 3259)
+
+
