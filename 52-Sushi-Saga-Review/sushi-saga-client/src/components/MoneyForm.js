@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Render html form with callback for changing state of "money"
 const MoneyForm = (props) => {
     return (
         <form onSubmit={props.addMoney}>

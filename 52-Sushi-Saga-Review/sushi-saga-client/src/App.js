@@ -8,6 +8,8 @@ const API = "http://localhost:3000/sushis"
 
 class App extends Component {
 
+  // State initialized without class constructor
+  // works because App doesn't need a parent's props to create state
   state = {
       sushis: [],
       money: 100,
@@ -15,6 +17,7 @@ class App extends Component {
       eatenSushis: [],
   }
 
+  // Fetch /sushis data once on mount
   componentDidMount() {
     fetch(API)
       .then(res => res.json())
@@ -25,29 +28,45 @@ class App extends Component {
       })
   }
 
+  // Pass a subset of sushis array in state as props, determined by "page" start index
   renderSushisPage = () => {
     return this.state.sushis.slice(this.state.pageIndex, this.state.pageIndex + 4)
   }
 
+  // Update state upon clicking a sushi to eat
   eatSushi = (event) => {
+
+    // Find the target sushi id from a custom-id or dataset
     // const targetId = event.currentTarget.id.split('-')[1]
     const targetId = event.currentTarget.dataset.id;
+
+    // Make copies of state
     const newEatenSushis = [...this.state.eatenSushis]
     let newMoney = this.state.money
 
+    // Create copy of sushis array to mutate and update state
     const newSushis = this.state.sushis.map(sushi => {
-      const price = sushi.price
-      debugger
-      if ((sushi.id === parseInt(targetId, 10) && ((newMoney - price) >= 0)) && !sushi.isEaten) {
 
-          // eating sushi
+      // If current sushi elem has:
+      // - The same id as firing event
+      // - A price no greater than the remaining money in state
+      // - Not been eaten yet
+      if ((sushi.id === parseInt(targetId, 10) && ((newMoney - sushi.price) >= 0)) && !sushi.isEaten) {
+
+          // Then "eat" sushi by mutating
           sushi.isEaten = true
+
+          // Then add to eatenSushis array
           newEatenSushis.push(sushi)
-          newMoney -= price
+
+          // Then subtract sushi price from money
+          newMoney -= sushi.price
       }
+      // Whether sushi has mutated or not, return to be mapped into new array
       return sushi
     })
 
+    // Update newly changed state
     this.setState({
       sushis: newSushis,
       eatenSushis: newEatenSushis,
@@ -55,6 +74,7 @@ class App extends Component {
     })
   }
 
+  // Change page by adding +4 (the size of a page) to index state
   changeSushisPage = () => {
     const newPage = this.state.pageIndex + 4
     this.setState({
@@ -62,6 +82,7 @@ class App extends Component {
     })
   }
 
+  // Parse new money from input field and add to money state
   addMoney = (event) => {
     event.preventDefault()
     const moreMoney = parseInt(event.currentTarget.money.value, 10)

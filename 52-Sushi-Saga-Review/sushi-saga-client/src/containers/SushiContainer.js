@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 import MoreButton from '../components/MoreButton'
 import Sushi from '../components/Sushi'
 
+// Stateless container for passing props and rendering sushis
 const SushiContainer = (props) => {
   return (
     <Fragment>

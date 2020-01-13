@@ -2,6 +2,7 @@ import React, { Fragment } from 'react'
 
 const Table = (props) => {
 
+  // Function renders as many plates on the table as the length of the array
   const renderPlates = (array) => {
     return array.map((x, index) => {
       return <div key={index} className="empty-plate" style={{ top: -7 * index }}/>

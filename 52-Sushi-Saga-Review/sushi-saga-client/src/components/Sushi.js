@@ -2,6 +2,7 @@ import React from 'react'
 
 const Sushi = (props) => {
   
+  // Deconstruct sushi vars from props object
   const {img_url, name, price, id, isEaten} = props.sushiData
 
   return (
